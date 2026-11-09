@@ -16,7 +16,7 @@ if st.session_state.kullanıcı_adı == "":
     isim = st.text_input("Lütfen adını yaz ve Enter'a bas:", key="isim_girişi")
     if isim:
         st.session_state.kullanıcı_adı = isim
-        st.return()
+        st.rerun()
 else:
     #KULLANICI GİRİŞ YAPTIYSA OYUN BURADA BAŞLAR (Tüm alt kodlar içeride olmalı)
     
