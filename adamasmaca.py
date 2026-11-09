@@ -3,7 +3,7 @@ import streamlit as st
 import random
 
 # Sayfa ayarları
-st.set_page_config(page_title="🩸 Adam Asmaca Mobil", page_icon="q" \
+st.set_page_config(page_title="🩸 Adam Asmaca ", page_icon="q" \
 "💦", layout="centered")
 
 #Kullanıcı ismini hafızada tutmak için Session State oluşturuyoruz
@@ -105,7 +105,7 @@ if st.session_state.kalan_can > 0 and "_" in st.session_state.bilinen_durum:
 
 if "_" not in st.session_state.bilinen_durum:
     st.balloons()
-    st.success(f"🥳 TEBRİKLER ! Kelime: {st.session_state.secilen_kelime.upper()}")
+    st.success(f"🥳 TEBRİKLER ! Kelime: {st.session_state.kullanıcı_adı()}")
     if st.button("Yeniden Başlat 🔄"):
         oyunu_sifirla()
         st.rerun()
