@@ -17,7 +17,7 @@ if st.session_state.kullanıcı_adı == "":
     if isim:
         st.session_state.kullanıcı_adı = isim
         st.rerun()
-else:
+    st.stop()
     #KULLANICI GİRİŞ YAPTIYSA OYUN BURADA BAŞLAR (Tüm alt kodlar içeride olmalı)
     
 # Sabit Oyun Verileri
