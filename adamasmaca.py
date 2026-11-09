@@ -6,6 +6,20 @@ import random
 st.set_page_config(page_title="🩸 Adam Asmaca Mobil", page_icon="q" \
 "💦", layout="centered")
 
+#Kullanıcı ismini hafızada tutmak için Session State oluşturuyoruz
+if "kullanıcı_adı" not in st.session_state:
+    st.session_state.kullanıcı_adı = ""
+
+#Eğer isim girilmediyse giriş ekranını gösterelim
+if st.session_state.kullanıcı_adı == "":
+    st.title("👨🏻‍🦱 Adam Asmaca'ya Hoş Geldin!")
+    isim = st.text_input("Lütfen adını yaz ve Enter'a bas:", key="isim_girişi")
+    if isim:
+        st.session_state.kullanıcı_adı = isim
+        st.return()
+else:
+    #KULLANICI GİRİŞ YAPTIYSA OYUN BURADA BAŞLAR (Tüm alt kodlar içeride olmalı)
+    
 # Sabit Oyun Verileri
 KELIMELER = ["python", "yazilim", "bilgisayar", "kodlama", "klavye", "ekran", "terminal", "piyango", "şöhret", "domestos", "skeç", "disko", "spontane"]
 
@@ -24,7 +38,7 @@ DALGA_GECMELER = [
     "🤖: Yanlış tahmin! İp geriliyor, haberin olsun... 🕸️",
     "🤖: Kelimeyi rüyanda görsen daha iyi tahmin ederdin! Hatalı harf! 🛌",
     "🤖: Sallama yeteneğin sıfırmış dostum, o harf yok! 📉"
-    "🤖: Eşşek misin Eyüp ,saçmalıyorsun"
+    "🤖: Saçmalıyorsun"
 ]
 
 # Hafızayı Başlatma
@@ -33,7 +47,7 @@ if "secilen_kelime" not in st.session_state:
     st.session_state.bilinen_durum = ["_"] * len(st.session_state.secilen_kelime)
     st.session_state.yanlis_harfler = []
     st.session_state.kalan_can = 6
-    st.session_state.mesaj = "🤖 Bilgisayar: 'Yine mi sen EYÜP? Bakalım bu sefer kimi ipten alacaksın!'"
+    st.session_state.mesaj = "🤖 Bilgisayar: 'Yine mi sen? Bakalım bu sefer kimi ipten alacaksın!'"
     st.session_state.mesaj_turu = "info"
 
 def oyunu_sifirla():
@@ -41,7 +55,7 @@ def oyunu_sifirla():
     st.session_state.bilinen_durum = ["_"] * len(st.session_state.secilen_kelime)
     st.session_state.yanlis_harfler = []
     st.session_state.kalan_can = 6
-    st.session_state.mesaj = "🤖 Bilgisayar: 'Yine mi sen EYÜP? Bakalım bu sefer kimi ipten alacaksın!'"
+    st.session_state.mesaj = "🤖 Bilgisayar: 'Yine mi sen? Bakalım bu sefer kimi ipten alacaksın!'"
     st.session_state.mesaj_turu = "info"
 
 # ---- Arayüz Tasarımı ----
@@ -91,7 +105,7 @@ if st.session_state.kalan_can > 0 and "_" in st.session_state.bilinen_durum:
 
 if "_" not in st.session_state.bilinen_durum:
     st.balloons()
-    st.success(f"🥳 TEBRİKLER EYÜP! Kelime: {st.session_state.secilen_kelime.upper()}")
+    st.success(f"🥳 TEBRİKLER ! Kelime: {st.session_state.secilen_kelime.upper()}")
     if st.button("Yeniden Başlat 🔄"):
         oyunu_sifirla()
         st.rerun()
